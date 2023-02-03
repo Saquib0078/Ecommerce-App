@@ -5,6 +5,7 @@ const productController = require('../controller/productController')
 const cartController = require('../controller/cartController')
 const orderController = require('../controller/orderController')
 const auth = require('../auth/auth')
+// const qr = require('qrcode')
 
 
 //**********************user*********************/
@@ -29,6 +30,21 @@ router.delete('/users/:userId/cart', auth.Authentication, auth.Authorization, ca
 //*********************Order*****************/
 router.post('/users/:userId/orders', auth.Authentication,auth.Authorization, orderController.placeOrder)
 router.put('/users/:userId/orders', auth.Authentication, auth.Authorization, orderController.updateOrder)
+
+// router.get('/qr', (req, res) => {
+//     const { url } = req.query
+//     qr.toFile(`qr.png`, url, {
+//       color: {
+//         dark: '#000000',  // Black dots
+//         light: '#ffffff' // White background
+//       }
+//     }, (err) => {
+//       if (err) throw err
+//       res.download(`qr.png`)
+//     })
+//   })
+
+
 
 
 module.exports = router

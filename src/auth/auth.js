@@ -41,7 +41,7 @@ const Authorization = async function (req, res, next) {
 
         let userId = req.params.userId
         let user = req.decodedToken.userId
-
+  
         if (!mongoose.Types.ObjectId.isValid(userId)) return res.status(400).send({ status: false, message: "Invalid UserID" })
 
         let presentUser = await userModel.findById({ _id: userId, isDeleted: false })

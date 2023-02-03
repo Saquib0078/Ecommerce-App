@@ -147,8 +147,9 @@ const getProductByFilters = async function (req, res) {
         checkDelete.availableSizes = {}
         checkDelete.availableSizes = { $in: query.size }
       }
-    }
-
+    }  
+    
+     
     const returnAllProduct = await productModel.find(checkDelete).sort(sortArr)
     if (returnAllProduct.length == 0) return res.status(404).send({ status: false, message: "No product found" })
     return res.status(200).send({ status: true, message: "Success", data: returnAllProduct })

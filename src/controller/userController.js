@@ -133,7 +133,7 @@ const loginUser = async function (req, res) {
       },
       "user-secret-key", { expiresIn: "5 hr" }
     );
-
+        
     return res.status(201).send({ status: true, message: "User login successfull", data: { userId: checkUser._id, token: createToken } });
   } catch (err) {
     return res.status(500).send(err.message);

@@ -3,6 +3,12 @@ const route = require('./route/route.js')
 const mongoose = require('mongoose')
 const app = express()
 const multer= require('multer')
+const cors = require('cors')
+app.use(cors())
+app.use(cors({
+    origin: ['http://example.com', 'https://example.com']
+  }))
+  
 
 app.use(multer().any());
 
