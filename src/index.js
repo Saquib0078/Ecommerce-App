@@ -9,7 +9,7 @@ app.use(multer().any());
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-mongoose.connect("mongodb+srv://NehaVerma009:A9CEHRbpunBJ90to@cluster0.r6xdcuv.mongodb.net/group65Database", {
+mongoose.connect("mongodb+srv://saquib007:Jdo1pCEGwZpOgtdD@cluster0.rvsi5lf.mongodb.net/EcomApp", {
     useNewUrlParser: true
 })
 .then(()=> console.log("MongoDB is connected"))
