@@ -2,7 +2,7 @@ const userModel = require("../model/userModel");
 const bcrypt = require('bcryptjs')
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
-const { uploadFile } = require('../utils/awsUpload');
+const { uploadFile } = require('../Utils/awsUpload');
 const { isValidString, isEmail, isValidPassword, isValidPhone, isValidPincode, } = require("../Validator/userValidator");
 
 //**************************Create User*******************************/
