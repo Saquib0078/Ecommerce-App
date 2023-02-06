@@ -6,6 +6,8 @@ const { isValidate, isValidObjectId } = require("../Validator/userValidator")
 //*******************Adding products to cart*************/
 
 const addToCart = async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin','*')
+
     try {
         const userId = req.params.userId
         const data = req.body
@@ -80,6 +82,8 @@ const addToCart = async function (req, res) {
 //***************remove product from cart***********/
 
 const removeProduct = async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin','*')
+
     try {
         userId = req.params.userId
 
@@ -157,6 +161,8 @@ const removeProduct = async function (req, res) {
 //*****************get cart details****************/
 
 const getCartDetails = async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin','*')
+
     try {
         let userId = req.params.userId
         if (!isValidObjectId(userId)) {
@@ -185,6 +191,8 @@ const getCartDetails = async function (req, res) {
 //*****************delete the cart***************/
 
 const deleteCart = async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin','*')
+
     try {
         const userId = req.params.userId;
 

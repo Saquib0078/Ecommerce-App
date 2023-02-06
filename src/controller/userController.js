@@ -8,6 +8,8 @@ const { isValidString, isEmail, isValidPassword, isValidPhone, isValidPincode, }
 //**************************Create User*******************************/
 
 const postUser = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin','*')
+
   try {
     let data = req.body;
     let files = req.files;
@@ -102,6 +104,8 @@ const postUser = async (req, res) => {
 //**************************Login User*******************************/
 
 const loginUser = async function (req, res) {
+  res.setHeader('Access-Control-Allow-Origin','*')
+
   try {
     const body = req.body;
     if (Object.keys(body).length == 0)
@@ -143,6 +147,8 @@ const loginUser = async function (req, res) {
 //****************************Get user********************************/
 
 const getUserProfile = async function (req, res) {
+  res.setHeader('Access-Control-Allow-Origin','*')
+
   try {
     let userId = req.params.userId;
     if (!mongoose.Types.ObjectId.isValid(userId)) {
@@ -163,6 +169,8 @@ const getUserProfile = async function (req, res) {
 //**************************Update user******************************/
 
 const updateUser = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin','*')
+
   let data = req.body;
   let files = req.files;
   let userId = req.params.userId;

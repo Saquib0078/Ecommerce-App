@@ -5,6 +5,8 @@ const { isValidate, isValidObjectId } = require("../Validator/userValidator");
 //***********************create Order*****************************/
 
 const placeOrder = async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin','*')
+
     try {
         let data = req.body
         let userId = req.params.userId
@@ -68,6 +70,8 @@ const placeOrder = async function (req, res) {
 //**********************************update Order************************/
 
 const updateOrder = async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin','*')
+
     try {
         let data = req.body
         let { orderId } = data

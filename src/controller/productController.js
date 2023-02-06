@@ -5,6 +5,8 @@ const { uploadFile } = require('../Utils/awsUpload');
 
 
 const product = async function (req, res) {
+  res.setHeader('Access-Control-Allow-Origin','*')
+
   try {
     let data = req.body
     let files = req.files
@@ -52,19 +54,21 @@ const product = async function (req, res) {
       //upload to s3 and get the uploaded link
       // res.send the link back to frontend/postman
       var productImage = await uploadFile(files[0]);
-    } else {
+    } 
+   
+      if(!productImage)
       return res.status(400).send({ status: false, message: "please add product image!!" });
-    }
+    
 
     //checking for available Sizes of the products
    
-    if (availableSizes || availableSizes == "") {
-      availableSizes = availableSizes.toUpperCase().split(",").map((x)=> x.trim()) // Creating an array
-      data.availableSizes = availableSizes;
-      if (!isValidSize(availableSizes)) {
-        return res.status(400).send({ status: false, message: "please provide the product sizes among : [S , XS , M , X , L , XXL , XL ]" })
-      } 
-    }
+    // if (availableSizes || availableSizes == "") {
+    //   availableSizes = availableSizes.toUpperCase().split(",").map((x)=> x.trim()) // Creating an array
+    //   data.availableSizes = availableSizes;
+    //   if (!isValidSize(availableSizes)) {
+    //     return res.status(400).send({ status: false, message: "please provide the product sizes among : [S , XS , M , X , L , XXL , XL ]" })
+    //   } 
+    // }
 
     let product = {
       title: title,
@@ -92,6 +96,8 @@ const product = async function (req, res) {
 //*************************Get products by filters******************************/
 
 const getProductByFilters = async function (req, res) {
+  res.setHeader('Access-Control-Allow-Origin','*')
+
   try {
     let query = req.query
     let checkDelete = { isDeleted: false } //checking if isDeleted is false or not
@@ -162,6 +168,8 @@ const getProductByFilters = async function (req, res) {
 //*********************Get products by ID***************************/
 
 let getProductsById = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin','*')
+
   try {
     let productId = req.params.productId;
 
@@ -183,6 +191,8 @@ let getProductsById = async (req, res) => {
 //*********************update products******************************/
 
 let updateProductsById = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin','*')
+
   try {
     let productsId = req.params.productId
 
@@ -281,6 +291,8 @@ let updateProductsById = async (req, res) => {
 //*******************************delete API****************************/
 
 const deleteProductById = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin','*')
+
   try {
     const productId = req.params.productId;
 
@@ -303,6 +315,7 @@ const deleteProductById = async (req, res) => {
     res.status(500).send({ status: false, message: err.message });
   }
 };
+//push
 
 
 module.exports.product = product
@@ -310,3 +323,4 @@ module.exports.getProductsById = getProductsById
 module.exports.updateProductsById = updateProductsById
 module.exports.deleteProductById = deleteProductById
 module.exports.getProductByFilters = getProductByFilters
+
