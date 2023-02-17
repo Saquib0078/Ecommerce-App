@@ -6,7 +6,7 @@ const multer= require('multer')
 const cors = require('cors')
 app.use(cors())
 app.use(cors({
-    origin: ['http://example.com', 'https://example.com']
+    origin: ['*']
   }))
   
 
